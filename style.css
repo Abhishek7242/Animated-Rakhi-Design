@@ -1,0 +1,277 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+    background-color: #f0f0f0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.rakhi-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.middle-part {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, gold, orange, red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* animation: rotate 7s linear infinite; */
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.8), inset 0 0 20px rgba(255, 69, 0, 0.8);
+}
+
+.shape-layer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 10s linear infinite;
+    z-index: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.6) inset;
+}
+
+.hexagon {
+    width: 130px;
+    height: 130px;
+    background: linear-gradient(45deg, red, yellow);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+}
+
+.small-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to right, blue, cyan);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.6);
+}
+
+.diamond {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, rgb(247, 0, 255), lime);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(247, 0, 255, 0.6);
+}
+
+.star {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, gold, orange, red);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: 4;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.ring {
+    width: 160px;
+    height: 160px;
+    background: transparent;
+    border: 4px solid rgba(255, 215, 0, 0.8);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.center-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 6;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Add these styles for the ring on the thread */
+.ring-on-thread {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 3px solid gold;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: rotate-ring 5s linear infinite;
+}
+
+@keyframes rotate-ring {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Thread Styles */
+.thread {
+    width: 350px;
+    height: 8px;
+    background: linear-gradient(to right, red, yellow, orange);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+    border-radius: 8px;
+}
+
+.thread-pattern {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.7));
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.thread::before, .thread::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    height: 200%;
+    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 10px, transparent 10px, transparent 20px);
+    animation: move 2s linear infinite;
+    opacity: 0.6;
+}
+
+.thread::before {
+    left: 0;
+    animation-direction: normal;
+}
+
+.thread::after {
+    right: 0;
+    animation-direction: reverse;
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* Floating Particles */
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.5);
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+    animation: particle-float 2s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { top: 10%; left: 20%; animation-duration: 1.5s; }
+.particle:nth-child(2) { top: 40%; left: 70%; animation-duration: 2.5s; }
+.particle:nth-child(3) { top: 60%; left: 50%; animation-duration: 1.8s; }
+.particle:nth-child(4) { top: 80%; left: 30%; animation-duration: 2s; }
+.particle:nth-child(5) { top: 20%; left: 80%; animation-duration: 2.2s; }
+
+/* Other styles remain the same */
+
+/* Adjusted Flower Layer */
+.flower-layer {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: rotate 10s linear infinite;
+
+}
+
+.petal {
+    position: absolute;
+    /* width: 60px;
+    height: 120px;
+        top: 11px;
+    left: 98px; */
+        width: 71px;
+    height: 148px;
+    top: -19px;
+    left: 94px;
+
+    background: linear-gradient(45deg, pink, red);
+    border-radius: 50% 50% 0 0;
+    transform-origin: 50% 100%;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.petal:nth-child(1) {
+    transform: rotate(0deg) translateX(-50%);
+}
+.petal:nth-child(2) {
+    transform: rotate(45deg) translateX(-50%);
+}
+.petal:nth-child(3) {
+    transform: rotate(90deg) translateX(-50%);
+}
+.petal:nth-child(4) {
+    transform: rotate(135deg) translateX(-50%);
+}
+.petal:nth-child(5) {
+    transform: rotate(180deg) translateX(-50%);
+}
+.petal:nth-child(6) {
+    transform: rotate(225deg) translateX(-50%);
+}
+.petal:nth-child(7) {
+    transform: rotate(270deg) translateX(-50%);
+}
+.petal:nth-child(8) {
+    transform: rotate(315deg) translateX(-50%);
+}
+
+/* Ensure Middle Part is above the Flower */
+.middle-part {
+    position: relative;
+    z-index: 1;
+}
+@media only screen and (max-width: 600px) {
+.rakhi-container {
+transform: rotate(90deg)
+}
+}

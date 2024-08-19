@@ -137,6 +137,7 @@ body {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
     border-radius: 8px;
+    z-index: -1;
 }
 
 .thread-pattern {
